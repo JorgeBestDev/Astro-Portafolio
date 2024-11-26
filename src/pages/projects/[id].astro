@@ -1,0 +1,54 @@
+---
+// Importaciones
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import GithubButtom from "../../components/GithubButtom.astro";
+
+// Generación de rutas estáticas
+export async function getStaticPaths() {
+    const projects = await getCollection("projects");
+
+    return projects.map((project) => ({
+        params: { id: project.slug },
+        props: { project },
+    }));
+}
+
+// Props del componente
+const { project } = Astro.props;
+const { slug, data } = project;
+const { title, description, img, tags, github } = data;
+
+const {Content} = await render(project)
+---
+
+<Layout title={`${title} - Projects`}>
+    <Header />
+
+    <div class="container">
+        <div class="flex flex-row justify-around items-center">
+            <div class="flex flex-row items-center gap-4 w-2/3">
+                <a href="/">⬅ go back</a>
+                <h1 class="font-bold text-3xl  text-start">{title}</h1>
+            </div>
+            <div class="">
+                <GithubButtom GithubProject={github} />
+            </div>
+        </div>
+        <div class="flex flex-col items-center 2xl:mx-16 2xl:my-10 lg:mx-16 lg:my-14">
+            <section class="w-3/4 flex flex-row overflow-hidden">
+                {img.map((image) => (
+                    <img src={`/Experience/${slug}/${image}`} alt={title} class="w-full img" />
+                ))}
+            </section>
+
+        </div>
+    </div>
+    <div class="flex justify-center my-10">
+        <div class="prose prose-invert text-justify w-full max-w-[90ch] ">
+            <Content/>
+        </div>
+    </div>
+
+</Layout>

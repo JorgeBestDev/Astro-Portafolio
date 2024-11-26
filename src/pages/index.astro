@@ -1,102 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
-import { getCollection } from 'astro:content';
-
-const pages = await getCollection('pages');
-const technologies = [
-	{ name: 'Astro', src: '/Technologies/astro.png' },
-	{ name: 'CSS', src: '/Technologies/css.png' },
-	{ name: 'HTML', src: '/Technologies/html.png' },
-	{ name: 'JavaScript', src: '/Technologies/javascript.png' },
-	{ name: 'TypeScript', src: '/Technologies/typescript.png' },
-	{ name: 'Flask', src: '/Technologies/flask.png' },
-	{ name: 'Python', src: '/Technologies/python.png' },
-	{ name: 'MySQL', src: '/Technologies/mysql.png' },
-	{ name: 'Java EE', src: '/Technologies/java ee.png' },
-	{ name: 'Node.js', src: '/Technologies/node js.png' },
-	{ name: 'PHP', src: '/Technologies/php.png' },
-	{ name: 'Laravel', src: '/Technologies/laravel.png' },
-	{ name: 'React', src: '/Technologies/React.png' }
-];
+import Header from "../components/Header.astro"
 
 
+
+import Info from "../components/Info.astro"
+import Technologies from "../components/Technologies.astro"
+import Projects from '../components/Projects.astro';
 ---
 
 <Layout title="👋 Welcome to my Web Portfolio!">
-	<header class="container">
-		<div class="flex flex-row justify-between p-10 ">
-			<div>
-				<h1 class="font-sans font-medium 2xl:text-lg xl:text-lg lg:text-base sm:text-base text-sm text-slate-200">Welcome to my Web Portfolio!</h1>
-			</div>
-			<div>
-				<nav >
-					<ul class="2xl:flex lg:flex md:flex flex-row font-normal 2xl:text-lg xl:text-lg lg:text-base sm:hidden hidden gap-10">
-						<li >
-							<a href="#" class="hover:border-b-2 border-slate-500 ease-in-out" style="transition: all 50ms;">Contacto</a>
-						</li>
-						<li>
-							<a href="#" class="hover:border-b-2 border-slate-500 ease-in-out" style="transition: all 50ms;">Github</a>
-						</li>
-					</ul>
-				</nav>
-			</div>
-		</div>
-	</header>
-	<main class="container">
-		<div>
-			<div class="flex flex-row justify-around items-center 2xl:mx-16 2xl:my-14 lg:mx-16 lg:my-14">
-				<div class="h-96 w-96 relative">
-					<div class="absolute inset-0 border-4 border-none "></div>
-					<img class="w-full h-full object-cover rounded-full  shadow-lg" src="/PERFIL LINKEDIN.jpg" alt="Photo">
-				</div>
-				<div class="flex flex-col w-2/4">
-					<h1 class="font-bold text-3xl text-center"> 👋Hi! I am Jorge Molano👋 <span class="block"> 👨‍💻Software Developer💻 </span></h1>
-					<p class="text-justify m-8 prose text-white">
-						I am a technology professional in Software Analysis and Development, specializing in backend development.
-						I have experience in various programming languages such as Python, Java, PHP, JavaScript, and in managing MySQL databases.
-						I excel in using frameworks like Flask and Laravel, as well as developing applications with Node.js and React.js. Additionally,
-						I have knowledge of Tailwind CSS and Astro.js, which allows me to create complete and efficient solutions. I am committed to continuous learning
-						and passionate about implementing technologies that enhance user experience.
-					</p>
-				</div>
-			</div>
-		</div>
-	</main>
-	<section>
-		<h1 class="text-5xl my-10 font-extrabold flex justify-center">
-			Technologies
-		</h1>
-		<div class="scroller">
-			<ul class="scroller__inner">
-				{technologies.map((tech) => (
-					<li>
-						<img src={tech.src} alt={tech.name || 'Not found'} />
-					</li>
-				))}
-			</ul>
-		</div>
-	</section>
-	<script>
-		const scrollers = document.querySelectorAll('.scroller');
-		if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
-			addAnimation()
-		}
+	<Header />
 
-		function addAnimation(){
-			scrollers.forEach((scroller) => {
-				scroller.setAttribute("data-animated", 'true');
+	<Info/>
 
-				const scrollerInner = scroller.querySelector('.scroller__inner');
-				const scrollerContent = Array.from(scrollerInner.children);
+	<Technologies/>
 
-				scrollerContent.forEach((item) => {
-					const duplicatedItem = item.cloneNode(true)as HTMLElement;
-					duplicatedItem.setAttribute('aria-hidden', 'true')
-					scrollerInner?.appendChild(duplicatedItem);
-				})
-			})
-
-		}
-	</script>
+	<Projects/>
 </Layout>

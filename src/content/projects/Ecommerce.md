@@ -1,8 +1,9 @@
 ---
 title: Ecommerce
 description: Layout y Backend de una tienda virtual realista con carrito de compras y pagos.
-img: [Ecommerce Cart.png, Ecommerce Edit Info.png, Ecommerce Login.png, Ecommerce Register.png, Ecommerce.png]
+img: [Ecommerce.png, Ecommerce Cart.png, Ecommerce Edit Info.png, Ecommerce Login.png, Ecommerce Register.png]
 tags: [python, flask, javascript, tailwindcss]
+github: PythonWeb
 ---
 
 Este proyecto es una plataforma de e-commerce desarrollada con tecnologías modernas y escalables, diseñada inicialmente para la venta de zapatillas, **pero que puede adaptarse fácilmente a cualquier tipo de comercio electrónico según las necesidades del cliente.** La aplicación está construida utilizando **Python** y **Flask** para el backend, con una base de datos gestionada a través de **SQLAlchemy**, y **JavaScript** junto con **Tailwind CSS** para una experiencia de usuario interactiva y altamente personalizable en el frontend.

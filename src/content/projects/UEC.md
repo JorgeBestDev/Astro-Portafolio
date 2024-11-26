@@ -1,8 +1,9 @@
 ---
 title: Universidad Externado de Colombia
 description: Software implementado en las salas de especializadas de software de la UEC
-img: [UEC ADMIN.png, UEC main.png, UEC PAGE.png, UEC pc's.png, UEC software.png]
+img: [UEC main.png, UEC ADMIN.png, UEC PAGE.png, UEC pc's.png, UEC software.png]
 tags: [python, flask, javascript, tailwindcss, sockets]
+github: EntregableUEC
 
 ---
 

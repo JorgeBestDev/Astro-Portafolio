@@ -1,0 +1,57 @@
+---
+import ClientRouter from "astro/components/ClientRouter.astro";
+const technologies = [
+	{ name: 'Astro', src: '/Technologies/astro.png' },
+	{ name: 'CSS', src: '/Technologies/css.png' },
+	{ name: 'HTML', src: '/Technologies/html.png' },
+	{ name: 'JavaScript', src: '/Technologies/javascript.png' },
+	{ name: 'TypeScript', src: '/Technologies/typescript.png' },
+	{ name: 'Flask', src: '/Technologies/flask.png' },
+	{ name: 'Python', src: '/Technologies/python.png' },
+	{ name: 'MySQL', src: '/Technologies/mysql.png' },
+	{ name: 'Java EE', src: '/Technologies/java ee.png' },
+	{ name: 'Node.js', src: '/Technologies/node js.png' },
+	{ name: 'PHP', src: '/Technologies/php.png' },
+	{ name: 'Laravel', src: '/Technologies/laravel.png' },
+	{ name: 'React', src: '/Technologies/React.png' }
+];
+---
+
+<section class="my-10">
+    <h1 class="text-5xl my-10 font-extrabold flex justify-center">
+        Technologies
+    </h1>
+    <div class="scroller">
+        <ul class="scroller__inner">
+            {technologies.map((tech) => (
+                <li>
+                    <img src={tech.src} alt={tech.name || 'Not found'} />
+                </li>
+            ))}
+        </ul>
+    </div>
+</section>
+<script>
+    const scrollers = document.querySelectorAll('.scroller');
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
+        addAnimation()
+    }
+
+    function addAnimation(){
+        scrollers.forEach((scroller) => {
+            scroller.setAttribute("data-animated", 'true');
+
+            const scrollerInner = scroller.querySelector('.scroller__inner');
+            if (scrollerInner) { // Validar si no es null
+            const scrollerContent = Array.from(scrollerInner.children);
+
+            scrollerContent.forEach((item) => {
+                const duplicatedItem = item.cloneNode(true) as HTMLElement;
+                duplicatedItem.setAttribute('aria-hidden', 'true');
+                scrollerInner.appendChild(duplicatedItem);
+            });
+        }
+        })
+
+    }
+</script>
