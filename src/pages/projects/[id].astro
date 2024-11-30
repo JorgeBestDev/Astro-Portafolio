@@ -1,6 +1,7 @@
 ---
 // Importaciones
 import { getCollection, render } from "astro:content";
+import type { CollectionEntry } from 'astro:content';
 import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/Header.astro";
 import GithubButtom from "../../components/GithubButtom.astro";
@@ -17,7 +18,7 @@ export async function getStaticPaths() {
 
 // Props del componente
 const { project } = Astro.props;
-const { slug, data } = project;
+const { slug, data } = project as CollectionEntry<'projects'>;
 const { title, description, img, tags, github } = data;
 
 const {Content} = await render(project)
@@ -33,16 +34,15 @@ const {Content} = await render(project)
                 <h1 class="font-bold text-3xl  text-start">{title}</h1>
             </div>
             <div class="">
-                <GithubButtom GithubProject={github} />
+                {github && <GithubButtom GithubProject={github} />}
             </div>
         </div>
         <div class="flex flex-col items-center 2xl:mx-16 2xl:my-10 lg:mx-16 lg:my-14">
             <section class="w-3/4 flex flex-row overflow-hidden">
-                {img.map((image) => (
+                {img.map((image: string) => (
                     <img src={`/Experience/${slug}/${image}`} alt={title} class="w-full img" />
                 ))}
             </section>
-
         </div>
     </div>
     <div class="flex justify-center my-10">
@@ -50,5 +50,5 @@ const {Content} = await render(project)
             <Content/>
         </div>
     </div>
-
 </Layout>
+

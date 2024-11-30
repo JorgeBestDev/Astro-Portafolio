@@ -1,7 +1,8 @@
 ---
 import { getCollection } from "astro:content";
+import type { CollectionEntry } from 'astro:content';
 
-const projects = await getCollection('projects');
+const projects: CollectionEntry<'projects'>[] = await getCollection('projects');
 ---
 
 <article class="container">
@@ -29,7 +30,7 @@ const projects = await getCollection('projects');
                                 <p class="text-sm text-gray-300 my-2">{description}</p>
 
                                 <div class="flex flex-wrap gap-2 mt-3">
-                                    {tags?.map((tag) => (
+                                    {tags?.map((tag: string) => (
                                         <span class="bg-gray-800 text-white px-2 py-1 rounded text-sm">{tag}</span>
                                     ))}
                                 </div>
@@ -42,3 +43,4 @@ const projects = await getCollection('projects');
         </div>
     </div>
 </article>
+
