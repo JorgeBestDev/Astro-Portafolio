@@ -27,9 +27,9 @@ const {Content} = await render(project)
 <Layout title={`${title} - Projects`}>
     <Header />
 
-    <div class="container">
-        <div class="flex flex-row justify-around items-center">
-            <div class="flex flex-row items-center gap-4 w-2/3">
+    <div class="container w-5/6">
+        <div class="flex flex-col md:flex-row lg:flex-row xl:flex-row 2xl:flex-row justify-around items-center">
+            <div class="flex flex-row items-center gap-4 w-full">
                 <a href="/">⬅ go back</a>
                 <h1 class="font-bold text-3xl  text-start">{title}</h1>
             </div>
@@ -38,15 +38,17 @@ const {Content} = await render(project)
             </div>
         </div>
         <div class="flex flex-col items-center 2xl:mx-16 2xl:my-10 lg:mx-16 lg:my-14">
-            <section class="w-3/4 flex flex-row overflow-hidden">
+            <section class="w-full lg:w-3/4 xl:w-3/4 2xl:w-3/4 flex flex-row overflow-hidden">
                 {img.map((image: string) => (
                     <img src={`/Experience/${slug}/${image}`} alt={title} class="w-full img" />
                 ))}
             </section>
         </div>
     </div>
+
+
     <div class="flex justify-center my-10">
-        <div class="prose prose-invert text-justify w-full max-w-[90ch] ">
+        <div class="prose prose-invert text-justify lg:w-full max-w-[90ch] w-5/6 ">
             <Content/>
         </div>
     </div>
